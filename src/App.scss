@@ -1,0 +1,217 @@
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+$enable-responsive-font-sizes: true;
+
+:root {
+    --brand-blue: #4450d5;
+    --brand-green: #34d186;
+    --brand-link: #249e64;
+}
+
+html,
+body {
+    height: 100%;
+    line-height: 1rem;
+    background-color: var(--brand-blue);
+}
+
+small {
+    font-size: 70%
+}
+
+.btn {
+    font-size: 0.8rem;
+    background-color: var(--brand-green);
+}
+
+.link {
+    color: var(--brand-link);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--brand-link);
+        text-decoration: underline;
+    }
+}
+
+.bolt {
+    &__title {
+        @include rfs(75);
+    }
+
+    &__desc {
+        @include rfs(18);
+        line-height: 1;
+    }
+
+    &__learn {
+        justify-content: space-between;
+        font-size: 0.8rem;
+        cursor: pointer;
+
+        &:after {
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin-left: 1rem;
+            content: '';
+            background-image: url(../public/expand-down.svg);
+            background-size: 12px 13px;
+            border: 2px solid black;
+            border-radius: 50%;
+            filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(216deg) brightness(104%) contrast(100%);
+        }
+    }
+
+    &__login {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        height: 66px;
+    }
+}
+
+.navbar-toggler {
+    padding: 0;
+    border: none;
+
+    &-icon {
+        background-image: url(../public/hamburger.svg);
+        background-size: 24px 24px;
+    }
+}
+
+.form-control {
+    &:focus {
+        border-color: var(--brand-green);
+        box-shadow: 0 0 0 0.05rem var(--brand-green);
+    }
+}
+
+.form-control,
+.custom-select {
+    &.error {
+        border-color: var(--danger);
+        box-shadow: 0 0 0 0.05rem var(--danger);
+    }
+}
+
+.form-check {
+    $self: &;
+
+    &-input {
+        -webkit-appearance:none;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+
+        &:after {
+            content: '';
+            display: inline-block;
+            position: relative;
+            top: -2px;
+            left: 6px;
+            width: 5px;
+            height: 8px;
+            border-bottom: 2px solid #fff;
+            border-right: 2px solid #fff;
+            transform: rotate(45deg);
+            visibility: visible;
+        }
+    }
+
+    &.error {
+        #{$self}-label {
+            color: var(--danger);
+        }
+
+        #{$self}-input {
+            background-color: rgba(220, 53, 69, 0.3);
+            border-color: var(--danger);
+
+            &:after {
+                visibility: hidden;
+            }
+        }
+    }
+}
+
+input[type=checkbox]:checked   {
+    background-color: var(--brand-green);
+    outline: none;
+    border: 1px solid var(--brand-green);
+}
+input:focus,input:active {
+    outline: none;
+}
+
+input:hover {
+    border: 1px solid var(--brand-green);
+}
+
+.email-hint {
+    display: flex;
+    align-items: center;
+
+    &:before {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-right: 0.15rem;
+        content: '';
+        background-image: url(../public/info.svg);
+        background-size: 12px 12px;
+        opacity: 0.3;
+    }
+}
+
+.dropdown {
+    position: relative;
+
+    &__select {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        user-select: none;
+
+        &:after {
+            display: block;
+            width: 20px;
+            height: 20px;
+            content: '';
+            background-image: url(../public/expand-down.svg);
+            background-size: 20px 20px;
+        }
+    }
+
+    &__options {
+        position: absolute;
+        top: 115%;
+        right: 0;
+        left: 0;
+        max-height: 150px;
+        overflow-x: hidden;
+        background-color: var(--white);
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        z-index: 1;
+    }
+
+    &__item {
+        padding: 0.375rem 0.75rem;
+        cursor: pointer;
+
+        &:hover,
+        &--active {
+            background-color: var(--primary);
+        }
+    }
+}
